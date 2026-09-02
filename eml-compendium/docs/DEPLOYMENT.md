@@ -12,7 +12,10 @@ The EML Compendium is automatically deployed to GitHub Pages when changes are pu
 
 **Repository:** `ubcemergingmedialab/compendium`  
 **Branch:** `main`  
-**Build folder:** `dist`
+**App directory:** `eml-compendium/`  
+**Build folder:** `eml-compendium/dist`
+
+**Note:** The app code is in the `eml-compendium` subdirectory, but the GitHub Actions workflow is at the repository root in `.github/workflows/deploy.yml`.
 
 ## Prerequisites
 
@@ -93,7 +96,7 @@ You can also trigger deployment manually from GitHub:
 
 ## Workflow Configuration
 
-The deployment workflow is defined in `.github/workflows/deploy.yml`:
+The deployment workflow is defined in `.github/workflows/deploy.yml` at the **repository root** (not in the `eml-compendium` subdirectory):
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -115,6 +118,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./eml-compendium
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -123,6 +129,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: './eml-compendium/package-lock.json'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Install dependencies
@@ -132,7 +139,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./eml-compendium/dist
 
   deploy:
     environment:
@@ -145,6 +152,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
+
+**Key points:**
+- Workflow file is at repository root: `/.github/workflows/deploy.yml`
+- Sets `working-directory: ./eml-compendium` to run commands in the app directory
+- Build artifact path is `./eml-compendium/dist`
 
 ## Vite Configuration
 

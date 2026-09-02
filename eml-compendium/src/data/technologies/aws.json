@@ -23,6 +23,11 @@
     {
       "name": "EPISODE",
       "description": "AI-powered patient simulation using AWS Bedrock, Lambda, Polly, and Transcribe"
+    },
+    {
+	    "name": "ARCADE",
+	    "description": "WebAR content publising platform using AWS Lambda, S3, and Amplify"
     }
+
   ]
 }

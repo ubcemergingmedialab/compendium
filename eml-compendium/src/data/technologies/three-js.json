@@ -1,0 +1,35 @@
+{
+  "id": "three-js",
+  "title": "Three.js",
+  "category": "Web 3D Library",
+  "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop",
+  "description": "Three.js is a JavaScript library for creating 3D graphics in web browsers using WebGL. We use Three.js for interactive web-based 3D visualizations and educational simulations.",
+  "documentation": [
+    {
+      "title": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "title": "Three.js Examples",
+      "url": "https://threejs.org/examples/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "3D Metabolism",
+      "description": "Interactive web-based 3D visualization of metabolic pathways",
+      "documentationUrl": "https://eml.ubc.ca/metabolism/"
+    },
+    {
+      "name": "Virtual Soils",
+      "description": "3D soil structure visualization and exploration",
+      "documentationUrl": "https://eml.ubc.ca/virtualsoils/"
+    },
+    {
+      "name": "Pterygopalatine Fossa Web Viewer",
+      "description": "Web-based 3D anatomical visualization",
+      "documentationUrl": "https://eml.ubc.ca/pterygopalatine-fossa/web-2023/"
+    }
+  ]
+}

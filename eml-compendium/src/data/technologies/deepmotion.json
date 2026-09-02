@@ -1,0 +1,24 @@
+{
+  "id": "deepmotion",
+  "title": "DeepMotion",
+  "category": "Animation Tool",
+  "thumbnail": "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=600&fit=crop",
+  "description": "DeepMotion is an AI-powered motion capture and animation platform that creates realistic character animations from video. EML uses DeepMotion to generate natural body animations for 3D patient avatars in medical simulations.",
+  "documentation": [
+    {
+      "title": "DeepMotion Documentation",
+      "url": "https://www.deepmotion.com/"
+    },
+    {
+      "title": "DeepMotion Animate 3D",
+      "url": "https://www.deepmotion.com/animate-3d"
+    }
+  ],
+  "projects": [
+    {
+      "name": "EPISODE",
+      "description": "AI-generated body animations for 3D patient avatar"
+    }
+  ]
+}

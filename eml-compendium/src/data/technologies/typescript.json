@@ -1,0 +1,33 @@
+{
+  "id": "typescript",
+  "title": "TypeScript",
+  "category": "Programming Language",
+  "thumbnail": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop",
+  "description": "TypeScript is a strongly typed programming language that builds on JavaScript, providing better tooling and error detection at development time. EML uses TypeScript across web projects for improved code quality and maintainability.",
+  "documentation": [
+    {
+      "title": "TypeScript Documentation",
+      "url": "https://www.typescriptlang.org/docs/"
+    },
+    {
+      "title": "TypeScript Handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Full TypeScript implementation for type-safe 3D educational modules",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "TypeScript-based medical simulation platform with AI patient interaction"
+    },
+    {
+      "name": "EML Compendium",
+      "description": "Interactive technology showcase built with TypeScript"
+    }
+  ]
+}

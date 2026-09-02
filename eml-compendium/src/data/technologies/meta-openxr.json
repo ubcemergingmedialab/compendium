@@ -1,0 +1,24 @@
+{
+  "id": "meta-openxr",
+  "title": "Meta OpenXR",
+  "category": "XR Platform",
+  "thumbnail": "https://images.unsplash.com/photo-1617802690658-1173a812650d?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1617802690658-1173a812650d?w=800&h=600&fit=crop",
+  "description": "Meta OpenXR is Meta's implementation of the OpenXR standard, providing optimized support for Meta Quest headsets. EML uses Meta OpenXR to access Quest-specific features and ensure optimal performance on Meta VR hardware.",
+  "documentation": [
+    {
+      "title": "Meta Quest Development",
+      "url": "https://developer.oculus.com/"
+    },
+    {
+      "title": "Meta OpenXR Documentation",
+      "url": "https://developer.oculus.com/documentation/unity/unity-openxr-overview/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "VestibuLearn",
+      "description": "Optimized for Meta Quest 2 and Quest 3 using Meta OpenXR"
+    }
+  ]
+}

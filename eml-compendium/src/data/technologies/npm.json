@@ -1,0 +1,29 @@
+{
+  "id": "npm",
+  "title": "npm",
+  "category": "Package Manager",
+  "thumbnail": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop",
+  "description": "npm is the default package manager for Node.js and the world's largest software registry. EML uses npm to manage JavaScript dependencies, install libraries, and run build scripts across all web-based projects.",
+  "documentation": [
+    {
+      "title": "npm Documentation",
+      "url": "https://docs.npmjs.com/"
+    },
+    {
+      "title": "npm CLI Commands",
+      "url": "https://docs.npmjs.com/cli/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Dependency management and build scripts via npm",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "Package management for React PWA development"
+    }
+  ]
+}

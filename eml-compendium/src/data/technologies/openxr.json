@@ -1,0 +1,24 @@
+{
+  "id": "openxr",
+  "title": "OpenXR",
+  "category": "XR Standard",
+  "thumbnail": "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&h=600&fit=crop",
+  "description": "OpenXR is an open, royalty-free standard for access to virtual reality and augmented reality platforms. EML uses OpenXR to build cross-platform VR applications that work across multiple headset manufacturers.",
+  "documentation": [
+    {
+      "title": "OpenXR Specification",
+      "url": "https://www.khronos.org/openxr/"
+    },
+    {
+      "title": "OpenXR Documentation",
+      "url": "https://registry.khronos.org/OpenXR/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "VestibuLearn",
+      "description": "VR vestibular education tool built with OpenXR for Meta Quest"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "unity",
+  "title": "Unity",
+  "category": "Game Engine",
+  "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop",
+  "description": "Unity is a cross-platform game engine used for developing video games, simulations, and interactive experiences. At EML, we use Unity for creating immersive learning environments and VR/AR applications.",
+  "documentation": [
+    {
+      "title": "Unity Documentation",
+      "url": "https://docs.unity3d.com/"
+    },
+    {
+      "title": "Unity Learn",
+      "url": "https://learn.unity.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Pterygopalatine Fossa VR",
+      "description": "Interactive VR exploration of complex cranial anatomy",
+      "documentationUrl": "https://eml.ubc.ca/pterygopalatine-fossa/web-2023/"
+    },
+    {
+      "name": "Judicial Interrogatory Simulator",
+      "description": "VR training simulation for legal professionals",
+      "documentationUrl": "https://eml.ubc.ca/demos/"
+    },
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Interactive materials science education in VR",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "Moot Court",
+      "description": "Virtual courtroom simulation for law students"
+    }
+  ]
+}

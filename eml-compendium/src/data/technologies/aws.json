@@ -1,0 +1,28 @@
+{
+  "id": "aws",
+  "title": "AWS (Amazon Web Services)",
+  "category": "Cloud Platform",
+  "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+  "description": "Amazon Web Services provides cloud computing services including AI, serverless functions, and speech services. EML uses AWS Bedrock for conversational AI, Lambda for serverless backends, Polly for text-to-speech, and Transcribe for speech-to-text in educational simulations.",
+  "documentation": [
+    {
+      "title": "AWS Documentation",
+      "url": "https://docs.aws.amazon.com/"
+    },
+    {
+      "title": "AWS Bedrock",
+      "url": "https://aws.amazon.com/bedrock/"
+    },
+    {
+      "title": "AWS Lambda",
+      "url": "https://aws.amazon.com/lambda/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "EPISODE",
+      "description": "AI-powered patient simulation using AWS Bedrock, Lambda, Polly, and Transcribe"
+    }
+  ]
+}

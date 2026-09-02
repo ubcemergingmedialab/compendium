@@ -1,0 +1,25 @@
+{
+  "id": "react-three-fiber",
+  "title": "React Three Fiber",
+  "category": "3D Framework",
+  "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop",
+  "description": "React Three Fiber (R3F) is a React renderer for Three.js that brings declarative, component-based 3D graphics to the web. EML uses R3F to create interactive educational visualizations with the familiarity of React's development patterns.",
+  "documentation": [
+    {
+      "title": "React Three Fiber Documentation",
+      "url": "https://r3f.docs.pmnd.rs/"
+    },
+    {
+      "title": "React Three Drei (Helpers)",
+      "url": "https://drei.docs.pmnd.rs/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Interactive 3D materials science modules built with React Three Fiber",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    }
+  ]
+}

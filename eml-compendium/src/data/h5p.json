@@ -1,0 +1,24 @@
+{
+  "id": "h5p",
+  "title": "H5P",
+  "category": "Interactive Content",
+  "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+  "description": "H5P is a framework for creating and sharing rich HTML5 content. We use H5P to create interactive videos, quizzes, presentations, and games that can be embedded in our LMS.",
+  "documentation": [
+    {
+      "title": "H5P Documentation",
+      "url": "https://h5p.org/documentation"
+    },
+    {
+      "title": "H5P Content Types",
+      "url": "https://h5p.org/content-types-and-applications"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Interactive Course Modules",
+      "description": "Engaging H5P-based learning activities across multiple courses"
+    }
+  ]
+}

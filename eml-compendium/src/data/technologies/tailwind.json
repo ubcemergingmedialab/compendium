@@ -1,0 +1,24 @@
+{
+  "id": "tailwind",
+  "title": "Tailwind CSS",
+  "category": "CSS Framework",
+  "thumbnail": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=600&fit=crop",
+  "description": "Tailwind CSS is a utility-first CSS framework that enables rapid UI development with pre-built classes. EML uses Tailwind for building responsive, accessible interfaces in web applications with consistent design systems.",
+  "documentation": [
+    {
+      "title": "Tailwind CSS Documentation",
+      "url": "https://tailwindcss.com/docs"
+    },
+    {
+      "title": "Tailwind UI Components",
+      "url": "https://tailwindui.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "EPISODE",
+      "description": "Medical simulation platform styled with Tailwind CSS for tablet interfaces"
+    }
+  ]
+}

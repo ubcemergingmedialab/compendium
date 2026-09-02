@@ -1,0 +1,24 @@
+{
+  "id": "canvas-lms",
+  "title": "Canvas LMS",
+  "category": "Learning Management",
+  "thumbnail": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop",
+  "description": "Canvas LMS is our primary learning management system for course delivery, assessment, and student engagement. We integrate Canvas with various educational technologies to create seamless learning experiences.",
+  "documentation": [
+    {
+      "title": "Canvas Instructor Guide",
+      "url": "https://community.canvaslms.com/t5/Instructor-Guide/tkb-p/Instructor"
+    },
+    {
+      "title": "Canvas API Documentation",
+      "url": "https://canvas.instructure.com/doc/api/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "EML Course Integration",
+      "description": "Integration of immersive content and experiences with Canvas courses"
+    }
+  ]
+}

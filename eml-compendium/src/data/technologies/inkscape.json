@@ -1,0 +1,24 @@
+{
+  "id": "inkscape",
+  "title": "Inkscape",
+  "category": "Vector Graphics",
+  "thumbnail": "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=800&h=600&fit=crop",
+  "description": "Inkscape is a free and open-source vector graphics editor used for creating and editing scalable vector graphics. EML uses Inkscape for creating icons, diagrams, and other vector-based educational assets.",
+  "documentation": [
+    {
+      "title": "Inkscape Documentation",
+      "url": "https://inkscape.org/doc/"
+    },
+    {
+      "title": "Inkscape Tutorials",
+      "url": "https://inkscape.org/learn/tutorials/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Vector graphics and icons for educational interfaces"
+    }
+  ]
+}

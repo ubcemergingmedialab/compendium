@@ -1,0 +1,24 @@
+{
+  "id": "react",
+  "title": "React",
+  "category": "Web Framework",
+  "thumbnail": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&h=600&fit=crop",
+  "description": "React is a JavaScript library for building user interfaces. We use React extensively for creating interactive web applications, learning management systems, and student-facing interfaces.",
+  "documentation": [
+    {
+      "title": "React Documentation",
+      "url": "https://react.dev/"
+    },
+    {
+      "title": "React Tutorial",
+      "url": "https://react.dev/learn"
+    }
+  ],
+  "projects": [
+    {
+      "name": "EML Compendium",
+      "description": "Interactive showcase of EML technologies and projects"
+    }
+  ]
+}

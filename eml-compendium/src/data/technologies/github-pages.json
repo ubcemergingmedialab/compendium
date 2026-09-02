@@ -1,0 +1,25 @@
+{
+  "id": "github-pages",
+  "title": "GitHub Pages",
+  "category": "Hosting Platform",
+  "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+  "description": "GitHub Pages is a static site hosting service that deploys directly from GitHub repositories. EML uses GitHub Pages for deploying web-based educational applications with automatic CI/CD workflows.",
+  "documentation": [
+    {
+      "title": "GitHub Pages Documentation",
+      "url": "https://docs.github.com/en/pages"
+    },
+    {
+      "title": "GitHub Actions for Pages",
+      "url": "https://github.com/actions/deploy-pages"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Deployed with automated production and development branches",
+      "documentationUrl": "https://ubcemergingmedialab.github.io/26---1001-ATOMIC/"
+    }
+  ]
+}

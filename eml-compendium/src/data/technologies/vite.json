@@ -1,0 +1,29 @@
+{
+  "id": "vite",
+  "title": "Vite",
+  "category": "Build Tool",
+  "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
+  "description": "Vite is a modern frontend build tool that provides fast development server startup and instant hot module replacement. At EML, we use Vite for building React applications with optimal performance and developer experience.",
+  "documentation": [
+    {
+      "title": "Vite Documentation",
+      "url": "https://vite.dev/"
+    },
+    {
+      "title": "Vite Guide",
+      "url": "https://vite.dev/guide/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Built with Vite for fast development and optimized production builds",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "Progressive Web App built with Vite for tablet deployment"
+    }
+  ]
+}

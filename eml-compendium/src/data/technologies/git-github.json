@@ -1,0 +1,29 @@
+{
+  "id": "git-github",
+  "title": "Git & GitHub",
+  "category": "Version Control",
+  "thumbnail": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=600&fit=crop",
+  "description": "Git is a distributed version control system, and GitHub is a platform for hosting and collaborating on Git repositories. EML uses Git and GitHub for source code management, collaboration, and continuous integration across most web and software projects.",
+  "documentation": [
+    {
+      "title": "Git Documentation",
+      "url": "https://git-scm.com/doc"
+    },
+    {
+      "title": "GitHub Docs",
+      "url": "https://docs.github.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Open source repository with automated CI/CD workflows",
+      "documentationUrl": "https://github.com/ubcemergingmedialab/26---1001-ATOMIC/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "Source code and infrastructure management via GitHub"
+    }
+  ]
+}

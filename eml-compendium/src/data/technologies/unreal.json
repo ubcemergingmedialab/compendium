@@ -1,0 +1,25 @@
+{
+  "id": "unreal",
+  "title": "Unreal Engine",
+  "category": "Game Engine",
+  "thumbnail": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&h=600&fit=crop",
+  "description": "Unreal Engine is a powerful real-time 3D creation tool used for photorealistic rendering, immersive experiences, and high-fidelity simulations. We leverage Unreal for high-end visualization projects and architectural walkthroughs.",
+  "documentation": [
+    {
+      "title": "Unreal Engine Documentation",
+      "url": "https://docs.unrealengine.com/"
+    },
+    {
+      "title": "Unreal Online Learning",
+      "url": "https://www.unrealengine.com/en-US/onlinelearning-courses"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "High-fidelity materials science visualization and interaction",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    }
+  ]
+}

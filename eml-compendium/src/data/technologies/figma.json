@@ -1,0 +1,29 @@
+{
+  "id": "figma",
+  "title": "Figma",
+  "category": "Design Tool",
+  "thumbnail": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+  "description": "Figma is a collaborative interface design tool used for creating user interfaces, prototypes, and design systems. EML uses Figma for UI/UX design across all projects, enabling seamless collaboration between designers and developers.",
+  "documentation": [
+    {
+      "title": "Figma Documentation",
+      "url": "https://help.figma.com/"
+    },
+    {
+      "title": "Figma Best Practices",
+      "url": "https://www.figma.com/best-practices/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Complete UI design system and mockups created in Figma",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "Tablet interface design and user flow prototyping"
+    }
+  ]
+}

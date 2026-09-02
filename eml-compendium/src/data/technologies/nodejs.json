@@ -1,0 +1,29 @@
+{
+  "id": "nodejs",
+  "title": "Node.js",
+  "category": "Runtime Environment",
+  "thumbnail": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=300&fit=crop",
+  "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop",
+  "description": "Node.js is a JavaScript runtime built on Chrome's V8 engine that enables server-side JavaScript execution. EML uses Node.js for build tools, development servers, and serverless backend functions across web projects.",
+  "documentation": [
+    {
+      "title": "Node.js Documentation",
+      "url": "https://nodejs.org/docs/"
+    },
+    {
+      "title": "Node.js API Reference",
+      "url": "https://nodejs.org/api/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "IMLE (Immersive Materials Learning Environment)",
+      "description": "Development environment and build tooling powered by Node.js",
+      "documentationUrl": "https://eml.ubc.ca/imle/"
+    },
+    {
+      "name": "EPISODE",
+      "description": "Backend Lambda functions and development tools using Node.js"
+    }
+  ]
+}

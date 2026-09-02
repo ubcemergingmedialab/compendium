@@ -1,0 +1,258 @@
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detail-container {
+  background: var(--bg);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.detail-content {
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.detail-hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-hero-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+  color: white;
+}
+
+.detail-category {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.detail-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  letter-spacing: -1px;
+}
+
+.detail-body {
+  padding: 40px;
+}
+
+.detail-section {
+  margin-bottom: 40px;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 20px 0;
+}
+
+.detail-description {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.doc-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-h);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.doc-link:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+
+.doc-link .external-icon {
+  margin-left: auto;
+  opacity: 0.5;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-card {
+  padding: 24px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.project-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 8px 0;
+}
+
+.project-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 12px 0;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .detail-overlay {
+    padding: 0;
+  }
+
+  .detail-container {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .detail-hero {
+    height: 300px;
+  }
+
+  .detail-hero-info {
+    padding: 24px;
+  }
+
+  .detail-title {
+    font-size: 32px;
+  }
+
+  .detail-body {
+    padding: 24px;
+  }
+
+  .detail-section h2 {
+    font-size: 24px;
+  }
+
+  .detail-description {
+    font-size: 16px;
+  }
+
+  .link-grid {
+    grid-template-columns: 1fr;
+  }
+}

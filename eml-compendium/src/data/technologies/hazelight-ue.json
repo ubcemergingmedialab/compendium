@@ -1,0 +1,23 @@
+{
+  "id": "hazelight-ue",
+  "title": "Hazelight Unreal Engine",
+  "category": "Game Engine",
+  "thumbnail": "https://angelscript.hazelight.se/angelscript_unreal.png",
+  "image": "https://angelscript.hazelight.se/angelscript_unreal.png",
+  "description": "Hazelight's modification of the unreal engine offers all of the standard unreal engine features but with Angelscript, a scripting language that provides fast iteration and a simpler alternative to C++.",
+  "documentation": [
+    {
+      "title": "Angelscript Documentation Home",
+      "url": "https://angelscript.hazelight.se/"
+    },
+    {
+      "title": "Creating Widgets with Angelscript",
+      "url": "https://www.predictable-paul.com/blog/unreal-angelscript-widgets/"
+    },
+    {
+	"title": "Angelscript API Reference",
+        "url": "https://angelscript.hazelight.se/api/"
+    }
+  ],
+  "projects": []
+}

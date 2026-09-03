@@ -1,3 +1,3 @@
-# compendium
+# Compendium
 
 *max was here*

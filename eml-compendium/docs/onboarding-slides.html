@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EML Student Onboarding — Winter 2026W</title>
+  <style>
+    /* Theme tokens — EML branding */
+    :root {
+      --brand-navy: #002145;
+      --brand-blue: #0055b7;
+      --accent: #40b4e5;
+      --paper: #f4f1ea;
+      --ink: #0e1a28;
+      --muted: #5b6b7c;
+      --card: #ffffff;
+      --ok: #1a7a4c;
+      --caution: #b45309;
+      --no: #b42318;
+      --pill-yes-bg: #14532d;
+      --pill-yes-fg: #bbf7d0;
+      --pill-partial-bg: #78350f;
+      --pill-partial-fg: #fde68a;
+      --pill-no-bg: #7f1d1d;
+      --pill-no-fg: #fecaca;
+      --pill-caution-bg: #713f12;
+      --pill-caution-fg: #fde68a;
+      --dark-grad-a: #001a36;
+      --dark-grad-b: #002145;
+      --dark-grad-c: #00152c;
+      --glow: rgba(64, 180, 229, 0.18);
+      --font-ui: "Segoe UI", system-ui, sans-serif;
+      --font-display: "Segoe UI", "Iowan Old Style", Georgia, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--brand-navy);
+      color: var(--ink);
+      font-family: var(--font-display);
+    }
+
+    #deck {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      height: 100%;
+      padding: 5.5vh 7vw 8vh;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(1200px 500px at 100% -10%, var(--glow), transparent 55%),
+        linear-gradient(165deg, var(--dark-grad-a) 0%, var(--dark-grad-b) 45%, var(--dark-grad-c) 100%);
+      color: var(--paper);
+    }
+
+    .slide.active { display: flex; }
+
+    .slide.light {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .kicker {
+      font-family: var(--font-ui);
+      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .slide.light .kicker { color: var(--brand-blue); }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+      font-weight: 650;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      font-weight: 650;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .lede {
+      margin-top: 1.4rem;
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      max-width: 42ch;
+      line-height: 1.45;
+      color: color-mix(in srgb, var(--paper) 82%, transparent);
+    }
+
+    .slide.light .lede { color: var(--muted); }
+
+    .meta {
+      margin-top: 2.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      color: color-mix(in srgb, var(--paper) 55%, transparent);
+    }
+
+    ul.plain {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      max-width: 52rem;
+    }
+
+    ul.plain li {
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+      line-height: 1.4;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    ul.plain li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 0.55em;
+      height: 0.55em;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .slide.light ul.plain li::before { background: var(--brand-blue); }
+
+    .grid { display: grid; gap: 1rem; }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.15rem 1.2rem 1.25rem;
+    }
+
+    .slide.light .card {
+      background: var(--card);
+      border: 1px solid color-mix(in srgb, var(--brand-navy) 10%, transparent);
+      box-shadow: 0 8px 24px color-mix(in srgb, var(--brand-navy) 6%, transparent);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card small {
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      line-height: 1.4;
+      color: color-mix(in srgb, var(--paper) 75%, transparent);
+    }
+
+    .slide.light .card p,
+    .slide.light .card small { color: var(--muted); }
+
+    .num {
+      font-family: var(--font-ui);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .slide.light .num { color: var(--brand-blue); }
+
+    .pill {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      margin-bottom: 0.55rem;
+    }
+
+    .pill.yes { background: var(--pill-yes-bg); color: var(--pill-yes-fg); }
+    .pill.partial { background: var(--pill-partial-bg); color: var(--pill-partial-fg); }
+    .pill.no { background: var(--pill-no-bg); color: var(--pill-no-fg); }
+    .pill.caution { background: var(--pill-caution-bg); color: var(--pill-caution-fg); }
+
+    .phase {
+      display: flex;
+      align-items: stretch;
+      gap: 0.7rem;
+      margin-top: 0.4rem;
+    }
+
+    .phase .step {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.2rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .phase .arrow {
+      align-self: center;
+      color: var(--accent);
+      font-size: 1.6rem;
+      flex: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-ui);
+      font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.7rem 0.65rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      vertical-align: top;
+    }
+
+    .slide.light th, .slide.light td {
+      border-bottom: 1px solid color-mix(in srgb, var(--brand-navy) 10%, transparent);
+    }
+
+    th {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .slide.light th { color: var(--brand-blue); }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+    }
+
+    .flow span.n {
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      padding: 0.55rem 0.75rem;
+      border-radius: 10px;
+      color: var(--paper);
+    }
+
+    .slide.light .flow span.n {
+      background: color-mix(in srgb, var(--brand-blue) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--brand-blue) 28%, transparent);
+      color: var(--brand-navy);
+      font-weight: 600;
+    }
+
+    .flow i { color: var(--accent); font-style: normal; }
+    .slide.light .flow i { color: var(--brand-blue); }
+
+    .footer-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: color-mix(in srgb, var(--paper) 55%, transparent);
+      background: linear-gradient(transparent, rgba(0,0,0,0.35));
+      z-index: 10;
+    }
+
+    .progress {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .progress > i {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+    }
+
+    .help { opacity: 0.7; }
+
+    code {
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+      font-size: 0.9em;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      padding: 0.05em 0.35em;
+      border-radius: 4px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .grid.cols-2, .grid.cols-3, .grid.cols-5, .two-col, .phase {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+      }
+      .phase .arrow { transform: rotate(90deg); }
+    }
+
+    @media print {
+      html, body, #deck { height: auto; overflow: visible; background: #fff; }
+      .slide { display: flex !important; page-break-after: always; min-height: 100vh; }
+      .footer-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="deck">
+
+    <!-- Slide 1: Title -->
+    <section class="slide active">
+      <p class="kicker">UBC Emerging Media Lab</p>
+      <h1>Student Onboarding</h1>
+      <p class="lede">Winter 2026W · VestibuLearn, EPISODE, IMLE &amp; Planetary Health projects</p>
+      <p class="meta">September 2026 – April 2027 · <a href="https://eml.ubc.ca" style="color: var(--accent);">eml.ubc.ca</a></p>
+    </section>
+
+    <!-- Slide 2: Welcome -->
+    <section class="slide light">
+      <p class="kicker">Welcome</p>
+      <h2>Who we are &amp; what we build</h2>
+      <ul class="plain">
+        <li>Research lab at UBC specializing in immersive technology</li>
+        <li>VR, AR, and web applications for education and research</li>
+        <li>Part-time student teams (10 hrs/week, 300-hour term cap)</li>
+        <li>Projects rotate every term; documentation ensures continuity</li>
+      </ul>
+      <p class="meta" style="margin-top: 1.5rem;">Learn more: <a href="https://eml.ubc.ca/projects/" style="color: var(--brand-blue);">eml.ubc.ca/projects</a></p>
+    </section>
+
+    <!-- Slide 3: The Two Systems -->
+    <section class="slide">
+      <p class="kicker">Tools &amp; Workflow</p>
+      <h2>The two systems</h2>
+      <div class="phase">
+        <div class="step">
+          <span class="pill yes">Trello</span>
+          <h3>Planning &amp; Visibility</h3>
+          <p>Semester roadmap, sprint planning, task tracking, non-code work (meetings, equipment)</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <span class="pill yes">GitHub</span>
+          <h3>Code &amp; Issues</h3>
+          <p>Source control, pull requests, bug/feature tracking, technical documentation</p>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 2rem;">Trello card → GitHub issue (manual link) → Commits (#123) → PR (Closes #123) → Auto-close</p>
+    </section>
+
+    <!-- Slide 4: Onboarding Roadmap -->
+    <section class="slide light">
+      <p class="kicker">Next 2 Weeks</p>
+      <h2>Onboarding roadmap</h2>
+      <table>
+        <tr>
+          <th>Week</th>
+          <th>Sessions</th>
+          <th>Outcome</th>
+        </tr>
+        <tr>
+          <td><strong>Week 1</strong></td>
+          <td>Development fundamentals (Pragmatic Programmer) · AI tools · Trello &amp; GitHub workflow</td>
+          <td>Understand core principles and workflow</td>
+        </tr>
+        <tr>
+          <td><strong>Week 2</strong></td>
+          <td>Environment setup · Project deep-dive · Code review · Task assignment</td>
+          <td>Environment ready, first PR merged, real task started</td>
+        </tr>
+        <tr>
+          <td><strong>Week 3+</strong></td>
+          <td>Independent contribution · Pairing · Weekly updates</td>
+          <td>Part of the team, shipping features</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Slide 5: Development Fundamentals 1 - Pragmatic Attitude -->
+    <section class="slide light">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>Pragmatic Attitude</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Take Responsibility</h3>
+          <ul class="plain">
+            <li><strong>Your career:</strong> Own your learning and growth</li>
+            <li><strong>Your code:</strong> You're accountable for what ships</li>
+            <li><strong>Your decisions:</strong> Provide options, don't make excuses</li>
+            <li><strong>Your mistakes:</strong> Admit honestly, offer solutions</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Software Entropy</h3>
+          <ul class="plain">
+            <li><strong>Broken windows:</strong> One bad design decision invites more</li>
+            <li><strong>Don't live with it:</strong> Fix bad code when you see it</li>
+            <li><strong>Keep it clean:</strong> Pristine code encourages careful work</li>
+            <li><strong>Fight decay:</strong> Small fixes prevent large rot</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Development Fundamentals 2 - DRY -->
+    <section class="slide">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>DRY — Don't Repeat Yourself</h2>
+      <ul class="plain">
+        <li><strong>Every piece of knowledge must have a single, unambiguous, authoritative representation</strong></li>
+        <li>Not just code — applies to documentation, data schemas, API specs, configuration</li>
+        <li>Test: When one thing changes, do you have to update multiple places?</li>
+        <li>Duplication is the enemy — creates maintenance burden and contradictions</li>
+        <li>Abstract wisely — but don't force premature abstractions</li>
+      </ul>
+      <div class="meta" style="margin-top: 2rem;">
+        <p>Example: Constants in one file, utility functions in shared modules, API types generated from schemas</p>
+      </div>
+    </section>
+
+    <!-- Slide 7: Development Fundamentals 3 - Orthogonality -->
+    <section class="slide light">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>Orthogonality &amp; Decoupling</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">What is Orthogonality?</h3>
+          <ul class="plain">
+            <li>Components are <strong>independent</strong> — changes in A don't affect B</li>
+            <li>Write "shy" code — modules don't reveal unnecessary details</li>
+            <li>Reduce interdependency between system parts</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Benefits</h3>
+          <ul class="plain">
+            <li><strong>Productivity:</strong> Changes are localized, components reusable</li>
+            <li><strong>Risk reduction:</strong> Diseased code isolated, system less fragile</li>
+            <li><strong>Testing:</strong> Test modules independently</li>
+            <li><strong>Flexibility:</strong> Not tied to specific vendors or platforms</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Development Fundamentals 4 - Tracer Bullets -->
+    <section class="slide">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>Tracer Bullets &amp; Structured Discovery</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li><strong>Tracer bullets:</strong> Thin, end-to-end implementation through all layers</li>
+          <li>Use when you're not 100% sure where you're going</li>
+          <li>Small body of code has less inertia — easier to adjust aim</li>
+          <li>Get immediate feedback from users and stakeholders</li>
+          <li>Different from prototypes — tracer code is production-ready, kept and refined</li>
+        </ul>
+        <div class="card">
+          <h3>EML Application</h3>
+          <p>Build one complete user flow first (e.g., one EPISODE scenario end-to-end)</p>
+          <p>Then replicate the pattern for additional features</p>
+          <small style="display: block; margin-top: 0.6rem;">Validates architecture early, reduces risk</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: Development Fundamentals 5 - Design by Contract -->
+    <section class="slide light">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>Design by Contract</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Contracts Define Expectations</h3>
+          <ul class="plain">
+            <li><strong>Preconditions:</strong> What must be true before function runs</li>
+            <li><strong>Postconditions:</strong> What function guarantees when done</li>
+            <li><strong>Invariants:</strong> What remains true throughout</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Use Assertions</h3>
+          <ul class="plain">
+            <li>Validate inputs at function boundaries</li>
+            <li>Check assumptions explicitly in code</li>
+            <li>Fail fast when contracts violated</li>
+            <li>Document expectations through code</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem; font-family: var(--font-ui); font-size: 0.95rem; color: var(--muted);">
+        Example: TypeScript types are contracts, <code>assert</code> statements check runtime conditions
+      </p>
+    </section>
+
+    <!-- Slide 10: Development Fundamentals 6 - Basic Tools -->
+    <section class="slide">
+      <p class="kicker">The Pragmatic Programmer</p>
+      <h2>Basic Tools: Your Toolkit</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Text Manipulation</h3>
+          <ul class="plain">
+            <li><strong>Master one editor:</strong> Notepad, VS Code, Vim — the tool matters less than your proficiency</li>
+            <li><strong>Learn it deeply:</strong> Keyboard shortcuts, search/replace, multi-cursor, refactoring</li>
+            <li><strong>Text is universal:</strong> Configuration, code, documentation, logs — all text</li>
+            <li><strong>Invest the time:</strong> Efficiency compounds over your career</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Source Code Control</h3>
+          <ul class="plain">
+            <li><strong>Always use version control:</strong> Even for solo projects, even for "just trying something"</li>
+            <li><strong>It's your safety net:</strong> Undo anything, see what changed, experiment fearlessly</li>
+            <li><strong>Collaboration foundation:</strong> Multiple people, one codebase, no conflicts</li>
+            <li><strong>Time machine:</strong> Go back to any point in history, understand why changes were made</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">EML standard: Git + GitHub. The principles apply to any version control system.</p>
+    </section>
+
+    <!-- Slide 11: AI-Assisted Development -->
+    <section class="slide">
+      <p class="kicker">Session 3</p>
+      <h2>AI-assisted development</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Available Tools</h3>
+          <ul class="plain">
+            <li><strong>ChatGPT / Claude:</strong> For problem-solving, code review, debugging help</li>
+            <li><strong>VS Code extensions:</strong> Various AI assistants available</li>
+            <li>Use AI tools you have access to, within license terms</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Best Practices</h3>
+          <ul class="plain">
+            <li>Read every diff before accepting</li>
+            <li>Use small, focused prompts</li>
+            <li>Test after AI makes changes</li>
+            <li>You own the code — AI is a tool, not a decision maker</li>
+            <li>Never paste proprietary code into public AI tools</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Remember: Pragmatic attitude applies to AI — you're responsible for what ships</p>
+    </section>
+
+    <!-- Slide 12: Technical Foundations - HTTP & REST APIs -->
+    <section class="slide light">
+      <p class="kicker">Technical Foundations</p>
+      <h2>HTTP &amp; REST APIs</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">HTTP Basics</h3>
+          <ul class="plain">
+            <li><strong>Request/Response:</strong> Client asks, server answers</li>
+            <li><strong>Methods:</strong> GET (read), POST (create), PUT/PATCH (update), DELETE</li>
+            <li><strong>Status codes:</strong> 2xx success, 4xx client error, 5xx server error</li>
+            <li><strong>Headers:</strong> Metadata like authentication, content type</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">REST Principles</h3>
+          <ul class="plain">
+            <li><strong>Resources:</strong> Everything is a resource with a URL</li>
+            <li><strong>Stateless:</strong> Each request is independent</li>
+            <li><strong>JSON:</strong> Common data format for APIs</li>
+            <li><strong>EML example:</strong> EPISODE uses AWS Bedrock API for LLM, Polly for speech</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem; font-family: var(--font-ui); font-size: 0.95rem; color: var(--muted);">
+        Resources: MDN Web Docs (HTTP), REST API Tutorial
+      </p>
+    </section>
+
+    <!-- Slide 13: Technical Foundations - Computer Graphics Rendering Pipeline -->
+    <section class="slide">
+      <p class="kicker">Technical Foundations</p>
+      <h2>Computer Graphics Rendering Pipeline</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li><strong>1. Vertices:</strong> 3D points define object geometry</li>
+          <li><strong>2. Vertex Processing:</strong> Transform to screen space (world → view → projection)</li>
+          <li><strong>3. Rasterization:</strong> Convert triangles to pixels (fragments)</li>
+          <li><strong>4. Fragment Processing:</strong> Calculate color, lighting, textures per pixel</li>
+          <li><strong>5. Output:</strong> Final pixels written to screen</li>
+        </ul>
+        <div class="card">
+          <h3>EML Applications</h3>
+          <p><strong>VestibuLearn:</strong> Unity handles pipeline for VR rendering (2 views per frame for each eye)</p>
+          <p><strong>IMLE:</strong> Three.js/React Three Fiber uses WebGL pipeline for 3D molecules</p>
+          <small style="display: block; margin-top: 0.6rem;">Both use same fundamental pipeline, different APIs</small>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Resources: learnopengl.com, WebGL Fundamentals, Three.js docs, React Three Fiber docs, Unity Graphics Documentation</p>
+    </section>
+
+    <!-- Slide 14: Technical Foundations - State Management Patterns -->
+    <section class="slide light">
+      <p class="kicker">Technical Foundations</p>
+      <h2>State Management Patterns</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">What is State?</h3>
+          <ul class="plain">
+            <li><strong>State:</strong> Data that changes over time (user input, API responses, UI state)</li>
+            <li><strong>Local state:</strong> Owned by one component</li>
+            <li><strong>Shared state:</strong> Multiple components need access</li>
+            <li><strong>Immutability:</strong> Don't modify state directly, create new copies</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Patterns</h3>
+          <ul class="plain">
+            <li><strong>Unidirectional data flow:</strong> State flows down, events flow up</li>
+            <li><strong>State machines:</strong> Explicit states and transitions (Planetary Health uses this)</li>
+            <li><strong>Context/Providers:</strong> Share state without prop drilling</li>
+            <li><strong>Reducers:</strong> Predictable state updates</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem; font-family: var(--font-ui); font-size: 0.95rem; color: var(--muted);">
+        Resources: React docs (useState, useContext, useReducer)
+      </p>
+    </section>
+
+    <!-- Slide 15: Technical Foundations - Asynchronous Programming -->
+    <section class="slide">
+      <p class="kicker">Technical Foundations</p>
+      <h2>Asynchronous Programming</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Why Async?</h3>
+          <ul class="plain">
+            <li>Don't block while waiting for slow operations (network, file I/O)</li>
+            <li>Keep UI responsive during long tasks</li>
+            <li>Handle multiple operations concurrently</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">JavaScript Patterns</h3>
+          <ul class="plain">
+            <li><strong>Callbacks:</strong> Pass function to call when done (oldest pattern)</li>
+            <li><strong>Promises:</strong> Object representing future value (<code>.then()</code>, <code>.catch()</code>)</li>
+            <li><strong>Async/Await:</strong> Write async code that looks synchronous (modern, preferred)</li>
+            <li><strong>Event loop:</strong> How JS handles async without threads</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">EML example: EPISODE uses async/await for AWS API calls (Bedrock, Transcribe, Polly)</p>
+    </section>
+
+    <!-- Slide 16: Technical Foundations - Component-Based Architecture -->
+    <section class="slide light">
+      <p class="kicker">Technical Foundations</p>
+      <h2>Component-Based Architecture</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Core Concepts</h3>
+          <ul class="plain">
+            <li><strong>Composition over inheritance:</strong> Build complex UIs from simple pieces</li>
+            <li><strong>Encapsulation:</strong> Component owns its logic and state</li>
+            <li><strong>Reusability:</strong> Write once, use many times</li>
+            <li><strong>Single responsibility:</strong> Each component does one thing well</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Data Flow</h3>
+          <ul class="plain">
+            <li><strong>Props:</strong> Data passed from parent to child (read-only)</li>
+            <li><strong>Events:</strong> Child notifies parent of changes</li>
+            <li><strong>Lifecycle:</strong> Mount → Update → Unmount</li>
+            <li><strong>Both Unity and React:</strong> Use component model with different syntax</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">EML projects: React components in web projects, MonoBehaviours in Unity (VestibuLearn)</p>
+    </section>
+
+    <!-- Slide 17: Technical Foundations - TypeScript Type Systems -->
+    <section class="slide">
+      <p class="kicker">Technical Foundations</p>
+      <h2>TypeScript Type Systems</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Why TypeScript?</h3>
+          <ul class="plain">
+            <li><strong>Catch errors early:</strong> Type errors at compile time, not runtime</li>
+            <li><strong>Self-documenting:</strong> Types explain what code expects</li>
+            <li><strong>Better tooling:</strong> Autocomplete, refactoring, go-to-definition</li>
+            <li><strong>Scales well:</strong> Large codebases stay maintainable</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">Key Concepts</h3>
+          <ul class="plain">
+            <li><strong>Primitives:</strong> <code>string</code>, <code>number</code>, <code>boolean</code></li>
+            <li><strong>Interfaces:</strong> Define object shapes (contracts)</li>
+            <li><strong>Generics:</strong> Reusable types (<code>Array&lt;T&gt;</code>)</li>
+            <li><strong>Union types:</strong> Value can be one of several types</li>
+            <li><strong>Type inference:</strong> TS often figures out types automatically</li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">All EML web projects use TypeScript. Resources: TypeScript Handbook, Total TypeScript</p>
+    </section>
+
+    <!-- Slide 18: Trello Workflow -->
+    <section class="slide light">
+      <p class="kicker">Session 4</p>
+      <h2>Trello card lifecycle</h2>
+      <div class="flow">
+        <span class="n">Backlog</span><i>→</i>
+        <span class="n">Ready</span><i>→</i>
+        <span class="n">In Progress</span><i>→</i>
+        <span class="n">In Review</span><i>→</i>
+        <span class="n">Done</span>
+      </div>
+      <table style="margin-top: 2rem;">
+        <tr>
+          <th>List</th>
+          <th>Requirements</th>
+        </tr>
+        <tr>
+          <td><strong>Ready</strong></td>
+          <td>Owner assigned, acceptance criteria written, tagged <code>this-term</code></td>
+        </tr>
+        <tr>
+          <td><strong>In Progress</strong></td>
+          <td>Create GitHub issue, paste link in card description or "GitHub Issue" field, actively working</td>
+        </tr>
+        <tr>
+          <td><strong>Done</strong></td>
+          <td>PR merged, GitHub issue closed, demo-able if applicable</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Slide 19: GitHub Workflow -->
+    <section class="slide">
+      <p class="kicker">Session 4</p>
+      <h2>Pull request workflow</h2>
+      <div class="flow">
+        <span class="n">Create branch</span><i>→</i>
+        <span class="n">Make changes</span><i>→</i>
+        <span class="n">Commit with #123</span><i>→</i>
+        <span class="n">Push</span><i>→</i>
+        <span class="n">Open PR</span><i>→</i>
+        <span class="n">Review</span><i>→</i>
+        <span class="n">Merge</span>
+      </div>
+      <div class="grid cols-2" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Commit Format</h3>
+          <p><code>feat(scope): description (#123)</code> → new feature, auto-links to issue</p>
+          <p><code>fix(scope): description (#123)</code> → bug fix, auto-links to issue</p>
+          <p><code>docs: description</code> → docs only</p>
+        </div>
+        <div class="card">
+          <h3>PR Description</h3>
+          <p>Start with <code>Closes #123</code> to auto-close issue when merged</p>
+          <p>Include: What, Why, How tested, AI disclosure, Docs updated</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 20: Workflow Integration -->
+    <section class="slide light">
+      <p class="kicker">Session 4</p>
+      <h2>Linking Trello &amp; GitHub</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>Manual: Trello → Issue</h3>
+          <p>When moving card to "In Progress", create GitHub issue and paste URL in card description or "GitHub Issue" field</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>Automatic: Issue → Commits</h3>
+          <p>Reference issue in commit messages: <code>feat: thing (#45)</code><br>GitHub auto-links commit to issue</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>Automatic: PR → Issue</h3>
+          <p>Start PR description with <code>Closes #45</code><br>When PR merges, GitHub auto-closes issue</p>
+        </div>
+        <div class="card">
+          <span class="num">04</span>
+          <h3>Weekly Updates</h3>
+          <p>Post 3 bullets on active Trello card: done / doing / blocked<br>
+          Log time in Workday weekly (official payroll)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 21: Code Review -->
+    <section class="slide">
+      <p class="kicker">Session 5</p>
+      <h2>Code review standards</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>Check behavior, not syntax</h3>
+          <p>Linters handle syntax. You verify: does this match requirements? Will next term's student understand?</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>Platform-specific rules</h3>
+          <p><strong>Web:</strong> ESLint, tests required. <strong>Unity:</strong> C# only, scene changes need screenshot.</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>Apply pragmatic principles</h3>
+          <p>Check for DRY violations, orthogonality issues, missing contracts/assertions in critical paths</p>
+        </div>
+        <div class="card">
+          <span class="num">04</span>
+          <h3>AI disclosure matters</h3>
+          <p>Reviewer confirms tests and docs exist, not just green CI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 22: Success Metrics -->
+    <section class="slide light">
+      <p class="kicker">What Success Looks Like</p>
+      <h2>Milestones by week</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <span class="num">Week 2</span>
+          <h3>Onboarded</h3>
+          <p>First PR merged, environment working, understand workflow</p>
+        </div>
+        <div class="card">
+          <span class="num">Week 4</span>
+          <h3>Productive</h3>
+          <p>≥1 PR/week, daily time logging, async status updates</p>
+        </div>
+        <div class="card">
+          <span class="num">Month 1</span>
+          <h3>Independent</h3>
+          <p>Contributing to project goals, comfortable with AI, part of team</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 23: Red Flags -->
+    <section class="slide">
+      <p class="kicker">When to Ask for Help</p>
+      <h2>Tell your lead if...</h2>
+      <ul class="plain">
+        <li>Environment won't build after 2+ days trying docs &amp; AI</li>
+        <li>Stuck on technical problem >2 days without progress</li>
+        <li>Not sure what to work on or priorities unclear</li>
+        <li>Feeling overwhelmed or behind</li>
+        <li>Haven't logged time in a week</li>
+      </ul>
+      <p class="lede" style="margin-top: 2rem;">Asking for help is expected. Don't wait until you're really stuck.</p>
+    </section>
+
+    <!-- Slide 24: Resources -->
+    <section class="slide light">
+      <p class="kicker">Bookmark These</p>
+      <h2>Key resources</h2>
+      <table>
+        <tr>
+          <th>Resource</th>
+          <th>Location</th>
+        </tr>
+        <tr>
+          <td><strong>EML Website</strong></td>
+          <td><a href="https://eml.ubc.ca" style="color: var(--brand-blue);">eml.ubc.ca</a> (projects, team, publications)</td>
+        </tr>
+        <tr>
+          <td><strong>Communication</strong></td>
+          <td>Microsoft Teams (daily chat), FASmail (official email), GitHub Issues (technical discussions)</td>
+        </tr>
+        <tr>
+          <td><strong>Project README</strong></td>
+          <td>Repo root (start here always)</td>
+        </tr>
+        <tr>
+          <td><strong>Architecture docs</strong></td>
+          <td><code>docs/architecture.md</code></td>
+        </tr>
+        <tr>
+          <td><strong>Summer 2026 handover</strong></td>
+          <td><code>scoping2026W/PreviousTermEnd/</code></td>
+        </tr>
+        <tr>
+          <td><strong>AI coding standards</strong></td>
+          <td><code>eml-ai-coding-standards/PLAN.md</code></td>
+        </tr>
+        <tr>
+          <td><strong>Your Trello board</strong></td>
+          <td>(Link provided by project lead)</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Slide 25: Project Introductions - VestibuLearn -->
+    <section class="slide light">
+      <p class="kicker">Project 1</p>
+      <h2>VestibuLearn: VR Vestibular Education</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li>VR tool for medical students learning vestibular anatomy</li>
+          <li>Head-driven fluid simulation shows inner-ear mechanics</li>
+          <li>Teaches canalith repositioning maneuvers (Epley, Semont)</li>
+          <li>Originally for clinical use → pivoted to education only</li>
+        </ul>
+        <div class="card">
+          <h3>Your Mission</h3>
+          <p>Re-enable guided Epley maneuver, add second maneuver, build tutorial module, create contextual quizzes</p>
+          <small style="display: block; margin-top: 0.6rem;">Tech: Unity 6, Meta Quest, C#, XR Toolkit</small>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Context: <a href="https://eml.ubc.ca" style="color: var(--brand-blue);">eml.ubc.ca</a> (see VR Education projects)</p>
+    </section>
+
+    <!-- Slide 26: Project Introductions - EPISODE -->
+    <section class="slide">
+      <p class="kicker">Project 2</p>
+      <h2>EPISODE: Medication Administration Simulation</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li>Tablet app for nursing students practicing medication administration</li>
+          <li>AI patient conversation with QR scanning &amp; LLM assessment</li>
+          <li>Full episode: identification → counseling → documentation → debrief</li>
+          <li>One scenario complete (Amanda Kennedy)</li>
+        </ul>
+        <div class="card">
+          <h3>Your Mission</h3>
+          <p>Add 2-3 new scenarios, build lab results page, enhance avatar with facial expressions, enable guardrails</p>
+          <small style="display: block; margin-top: 0.6rem;">Tech: React PWA, AWS (Bedrock/Polly/Transcribe), TypeScript</small>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Context: <a href="https://eml.ubc.ca" style="color: var(--accent);">eml.ubc.ca</a> (see Healthcare Simulation projects)</p>
+    </section>
+
+    <!-- Slide 27: Project Introductions - IMLE -->
+    <section class="slide light">
+      <p class="kicker">Project 3</p>
+      <h2>IMLE: Immersive Materials Learning Environment</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li>Browser-based interactive tool for materials science education</li>
+          <li>5 complete modules: Atomic Bonding, Unit Cell, Lattice Defects, Tensile Testing, Graph Analysis</li>
+          <li>Serves ~700 students/year in APSC 278/279, MECH 221</li>
+          <li>Summer 2026 built core functionality, deployed on GitHub Pages</li>
+        </ul>
+        <div class="card">
+          <h3>Your Mission</h3>
+          <p>Polish for classroom deployment: color accessibility overhaul (WCAG AAA), tooltips &amp; guided onboarding, light/dark mode, cross-module consistency, quizzes &amp; feedback</p>
+          <small style="display: block; margin-top: 0.6rem;">Tech: React, React Three Fiber, TypeScript, Three.js</small>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Context: <a href="https://ubcemergingmedialab.github.io/26---1001-ATOMIC/" style="color: var(--brand-blue);">Live Demo</a> · Spring 2027 classroom deployment</p>
+    </section>
+
+    <!-- Slide 28: Project Introductions - Planetary Health -->
+    <section class="slide">
+      <p class="kicker">Project 4</p>
+      <h2>Planetary Health Medical Education</h2>
+      <div class="two-col">
+        <ul class="plain">
+          <li>Browser-based point-and-click educational experience for medical students</li>
+          <li>Teaches how environmental deterioration links to clinical outcomes (e.g., air pollution → respiratory disease)</li>
+          <li>~5 minute sessions: menu → waiting room → patient journey through care pathway</li>
+          <li>Target: time-limited medical learners needing high-yield, engaging content</li>
+        </ul>
+        <div class="card">
+          <h3>Your Mission</h3>
+          <p>Build one vertical slice (respiratory/air quality specialty): waiting room with patients, one full patient journey (risk factors → clinical encounter → investigation → treatment), learning outcomes mapping</p>
+          <small style="display: block; margin-top: 0.6rem;">Tech: React/Vue + TypeScript, state machine driven, SVG/illustrated UI</small>
+        </div>
+      </div>
+      <p class="meta" style="margin-top: 1.5rem;">Context: <a href="https://eml.ubc.ca" style="color: var(--accent);">eml.ubc.ca</a> (see Medical Education projects)</p>
+    </section>
+
+    <!-- Slide 29: Project Roles -->
+    <section class="slide light">
+      <p class="kicker">Team Structure</p>
+      <h2>Project roles &amp; responsibilities</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Project Lead/Scrum Master</h3>
+          <p>Runs project meetings and sprint planning<br>
+          Maintains Trello board and documentation<br>
+          Submits weekly Project Team Report to staff &amp; PI<br>
+          Coordinates with EML staff</p>
+        </div>
+        <div class="card">
+          <h3>Developers</h3>
+          <p>Work on tasks assigned via Trello<br>
+          Provide weekly updates to project lead<br>
+          Participate in code review<br>
+          Document your work for next team<br>
+          Submit weekly journal entries</p>
+        </div>
+        <div class="card">
+          <h3>EML Staff (Dante)</h3>
+          <p>Technical guidance and code review<br>
+          Architectural decisions<br>
+          Unblocking and problem-solving<br>
+          Quality assurance</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 30: EML Philosophy -->
+    <section class="slide light">
+      <p class="kicker">Principles</p>
+      <h2>How we work</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>AI assists; humans own decisions</h3>
+          <p>AI suggests, you verify. You're accountable for what ships.</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>Documentation is handoff</h3>
+          <p>Students rotate every term. Your docs = next team's survival guide.</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>One system per concern</h3>
+          <p>Trello = planning, GitHub = code. Link them, don't duplicate work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 31: Environment Setup -->
+    <section class="slide">
+      <p class="kicker">Session 2</p>
+      <h2>Environment setup checklist</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Prerequisites</h3>
+          <p>Git, code editor (VS Code, WebStorm, etc.), Python 3.11+ with <code>uv</code></p>
+          <p><strong>VestibuLearn:</strong> Unity 6 (6000.4.6f1)</p>
+          <p><strong>EPISODE:</strong> Node.js LTS</p>
+          <p><strong>IMLE:</strong> Node.js LTS</p>
+          <p><strong>Planetary Health:</strong> Node.js LTS</p>
+        </div>
+        <div class="card">
+          <h3>Access</h3>
+          <p>GitHub EML org, Trello board</p>
+          <p>Test: Can view and create Trello cards</p>
+        </div>
+        <div class="card">
+          <h3>Project Build</h3>
+          <p><strong>VestibuLearn:</strong> EarsScene runs in Unity</p>
+          <p><strong>EPISODE:</strong> <code>npm run dev</code> works</p>
+          <p><strong>IMLE:</strong> <code>npm run dev</code> works</p>
+          <p><strong>Planetary Health:</strong> <code>npm run dev</code> works</p>
+        </div>
+        <div class="card">
+          <h3>Documentation</h3>
+          <p>Review project README and handover docs in <code>scoping2026W/PreviousTermEnd/</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 32: Next Steps -->
+    <section class="slide">
+      <p class="kicker">Week 1 Action Items</p>
+      <h2>Complete by end of this week</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="pill yes">Day 1-2</span>
+          <h3>Environment Setup</h3>
+          <p>Install tools, verify access, project builds</p>
+        </div>
+        <div class="card">
+          <span class="pill yes">Day 3-4</span>
+          <h3>First PR</h3>
+          <p>Docs-only change, review diff, open PR</p>
+        </div>
+        <div class="card">
+          <span class="pill partial">Day 5</span>
+          <h3>Hour Tracking</h3>
+          <p><strong>Workday:</strong> Submit hours weekly (official, required for payroll)<br>
+          <strong>Journal entries:</strong> Track tasks, decisions, learnings (submit key points to lead weekly)<br>
+          <strong>Personal log:</strong> Track cumulative hours toward 300-hour cap</p>
+        </div>
+        <div class="card">
+          <span class="pill caution">Ongoing</span>
+          <h3>Study Pragmatic Principles</h3>
+          <p>Review development fundamentals and handover docs for your project</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 33: Close -->
+    <section class="slide light">
+      <p class="kicker">UBC Emerging Media Lab</p>
+      <h1>Let's build something great together</h1>
+      <p class="lede">Questions? Ask your project lead or check student-checklist.md</p>
+      <p class="meta">
+        Winter 2026W · Sep 2026 – Apr 2027<br>
+        <a href="https://eml.ubc.ca" style="color: var(--brand-blue);">eml.ubc.ca</a> · student-onboarding-plan.md
+      </p>
+    </section>
+
+  </div>
+
+  <div class="footer-bar">
+    <span>EML · Student Onboarding</span>
+    <span class="help">← → Space · F fullscreen · P print</span>
+    <span id="counter">1 / 25</span>
+    <div class="progress"><i id="bar"></i></div>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const counter = document.getElementById("counter");
+    const bar = document.getElementById("bar");
+    let i = 0;
+
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+      counter.textContent = (i + 1) + " / " + slides.length;
+      bar.style.width = ((i + 1) / slides.length * 100) + "%";
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"].includes(e.key)) {
+        e.preventDefault(); show(i + 1);
+      } else if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(e.key)) {
+        e.preventDefault(); show(i - 1);
+      } else if (e.key === "Home") { show(0); }
+      else if (e.key === "End") { show(slides.length - 1); }
+      else if (e.key === "f" || e.key === "F") {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      } else if (e.key === "p" || e.key === "P") {
+        window.print();
+      }
+    });
+
+    document.getElementById("deck").addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      const x = e.clientX / window.innerWidth;
+      show(x > 0.25 ? i + 1 : i - 1);
+    });
+
+    show(0);
+  </script>
+</body>
+</html>
